@@ -976,10 +976,12 @@ function normalizeNote(n: any): Note {
   const noteId = typeof rawId === 'object' ? (rawId?.$oid ?? String(rawId)) : String(rawId);
   return {
     id: noteId || String(Math.random()),
+    title: n.title || 'Untitled Note',
     content: n.context || n.content || '',
     relatedType: 'customer',
     relatedTo: String(n.relatedTo || n.customerId || ''),
     customerId: String(n.customerId || ''),
+    assginedTo: String(n.assginedTo || n.assignedTo || ''),
     authorId: String(n.createdBy || ''),
     authorName: formatOwnerName(n.createdBy),
     isPinned: Boolean(n.isPinned),
