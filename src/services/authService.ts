@@ -29,7 +29,7 @@ export const authService = {
         throw new Error(detail);
       }
       if (err.code === 'ERR_NETWORK' || !err.response) {
-        throw new Error("FastAPI Backend (http://127.0.0.1:8000) connect nahi ho pa raha. Kripya check karein ki FastAPI server running hai ya nahi.");
+        throw new Error("FastAPI Backend (http://crmtasktracker-production.up.railway.app) connect nahi ho pa raha. Kripya check karein ki FastAPI server running hai ya nahi.");
       }
       throw new Error(detail || err.message || "Registration failed");
     }
@@ -70,7 +70,7 @@ export const authService = {
         throw new Error(detail);
       }
       if (err.code === 'ERR_NETWORK' || !err.response) {
-        throw new Error("FastAPI Backend Server (http://127.0.0.1:8000) offline hai. Kripya python server start karein.");
+        throw new Error("FastAPI Backend Server (http://crmtasktracker-production.up.railway.app) offline hai. Kripya python server start karein.");
       }
       throw new Error(err.message || "Galat Email ya Password! Kripya sahi credentials daalein.");
     }
