@@ -1,4 +1,4 @@
-const SESSION_KEYS = ['access_token', 'ent_crm_auth_token', 'refresh_token'] as const;
+const SESSION_KEYS = ['access_token', 'ent_crm_auth_token', 'refresh_token', 'ent_crm_session_persistent'] as const;
 
 export type AuthSessionKey = typeof SESSION_KEYS[number];
 
