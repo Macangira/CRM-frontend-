@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getSessionValue, clearAuthSession, storeAuthSession } from '../utils/authStorage';
 
 // Ensure baseURL is http://crmtasktracker-production.up.railway.app without trailing /api to avoid double /api/api/ prefix
-export const API_BASE_URL = "crmtasktracker-production.up.railway.app" ;
+export const API_BASE_URL = "https://crmtasktracker-production.up.railway.app/" ;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
