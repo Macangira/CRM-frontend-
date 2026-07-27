@@ -978,7 +978,7 @@ function normalizeNote(n: any): Note {
     id: noteId || String(Math.random()),
     content: n.context || n.content || '',
     relatedType: 'customer',
-    relatedId: String(n.relatedTo || n.customerId || ''),
+    relatedTo: String(n.relatedTo || n.customerId || ''),
     customerId: String(n.customerId || ''),
     authorId: String(n.createdBy || ''),
     authorName: formatOwnerName(n.createdBy),
@@ -995,7 +995,7 @@ export const noteService = {
       const rawList = extractArray<any>(response.data);
       const notes = rawList.map(normalizeNote);
       if (relatedToId) {
-        return notes.filter(n => n.relatedId === relatedToId || n.customerId === relatedToId);
+        return notes.filter(n => n.relatedTo === relatedToId || n.customerId === relatedToId);
       }
       return notes;
     } catch (e) {
