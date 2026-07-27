@@ -1,7 +1,7 @@
 // Real FastAPI Production Service Abstraction Layer (Zero Fake Data & Flexible Array Extractors)
 import { apiClient } from '../api/fastapiClient';
 import {
-  User, Company, Customer, Contact, Lead, Deal, Task, Activity, NotificationItem, Role, Permission, DashboardMetrics, Priority, TaskStatus, DealStage, LeadStatus
+  User, Company, Customer, Contact, Lead, Deal, Task, Activity, NotificationItem, Role, Permission, DashboardMetrics, Priority, TaskStatus, DealStage, LeadStatus, Note
 } from '../types';
 
 function extractArray<T>(data: any): T[] {
@@ -240,6 +240,8 @@ export const customerService = {
           assignedUserName: ownerName,
           totalDealsValue: dealStats.total || Number(c.totalDealsValue || 0),
           activeDealsCount: dealStats.count || Number(c.activeDealsCount || 0),
+          notesCount: 0,
+          tasksCount: 0,
           createdAt: c.createdAt || new Date().toISOString()
         };
       });
@@ -264,7 +266,7 @@ export const customerService = {
       let companyNameResolved = '—';
       const compId = c.companyId || undefined;
       if (compId) {
-        const found = compList.find(comp => comp.id === compId || comp._id === compId);
+        const found = compList.find(comp => comp.id === compId || (comp as any)._id === compId);
         if (found) companyNameResolved = found.name;
       }
       if (companyNameResolved === '—' && c.companyName && !isHexId(c.companyName)) {
@@ -297,6 +299,8 @@ export const customerService = {
         assignedUserName: ownerNameResolved,
         totalDealsValue: c.totalDealsValue ?? 0,
         activeDealsCount: c.activeDealsCount ?? 0,
+        notesCount: 0,
+        tasksCount: 0,
         createdAt: c.createdAt || new Date().toISOString()
       };
     } catch (error) {
@@ -345,6 +349,8 @@ export const customerService = {
       assignedUserName: formatOwnerName(c.assignedTo, customerData.assignedUserName),
       totalDealsValue: customerData.totalDealsValue || 0,
       activeDealsCount: 0,
+      notesCount: 0,
+      tasksCount: 0,
       createdAt: c.createdAt || new Date().toISOString()
     };
   },
@@ -400,6 +406,8 @@ export const customerService = {
       assignedUserName: formatOwnerName(c.assignedTo, customerData.assignedUserName),
       totalDealsValue: customerData.totalDealsValue || 0,
       activeDealsCount: customerData.activeDealsCount || 0,
+      notesCount: 0,
+      tasksCount: 0,
       createdAt: c.createdAt || new Date().toISOString()
     };
   },
@@ -615,7 +623,7 @@ function normalizeTask(raw: any): Task {
     assignedUserId: String(raw.assignedTo || raw.assignedUserId || ''),
     assignedUserName: raw.assignedUserName || raw.assignedToName || 'Assigned User',
     relatedType: raw.relatedType || 'customer',
-    relatedId: relatedIdVal,
+    relatedTo: relatedIdVal,
     relatedName: raw.relatedName || (relatedIdVal ? `Customer #${String(relatedIdVal).slice(-4)}` : undefined),
     subtasks: Array.isArray(raw.subtasks) ? raw.subtasks : [],
     tags: Array.isArray(raw.tags) ? raw.tags : [raw.type || 'Call'],
@@ -666,8 +674,8 @@ export const taskService = {
         if (norm.assignedUserId && usersMap[norm.assignedUserId]) {
           norm.assignedUserName = usersMap[norm.assignedUserId];
         }
-        if (norm.relatedId && custMap[norm.relatedId]) {
-          norm.relatedName = custMap[norm.relatedId];
+        if (norm.relatedTo && custMap[norm.relatedTo]) {
+          norm.relatedName = custMap[norm.relatedTo];
         }
         return norm;
       });
@@ -685,8 +693,8 @@ export const taskService = {
       priority: taskData.priority === 'urgent' || taskData.priority === 'high',
       status: taskData.status || 'To Do',
       assignedTo: taskData.assignedUserId || undefined,
-      customerId: taskData.relatedId || undefined,
-      relatedTo: taskData.relatedId || undefined,
+      customerId: taskData.relatedTo || undefined,
+      relatedTo: taskData.relatedTo || undefined,
       type: (taskData.tags?.[0] || 'call').toLowerCase()
     };
 
@@ -785,6 +793,10 @@ export const companyService = {
           customerCount: c.customerCount || 0,
           dealCount: c.dealCount || 0,
           totalDealValue: c.totalDealValue || 0,
+          phone: '',
+          address: '',
+          city: '',
+          country: '',
           createdAt: c.createdAt || new Date().toISOString()
         };
       });
@@ -822,6 +834,10 @@ export const companyService = {
       customerCount: 0,
       dealCount: 0,
       totalDealValue: 0,
+      phone: '',
+      address: '',
+      city: '',
+      country: '',
       createdAt: c.createdAt || new Date().toISOString()
     };
   }
