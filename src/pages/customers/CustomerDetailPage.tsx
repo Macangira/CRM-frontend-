@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { customerService, dealService, taskService, noteService, contactService } from '../../services/crmServices';
 import { Customer, Deal, Task, Note, Contact } from '../../types';
-import { Card } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
-import { Badge } from '../../components/ui/Badge';
+import { Card } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
 import { Avatar } from '../../components/ui/avatar';
 import { ActivityStream } from '../../components/common/ActivityStream';
 import { PriorityBadge, TaskStatusBadge } from '../../components/common/StatusBadge';

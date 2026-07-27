@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from '../../components/ui/Card';
+import { Card } from '../../components/ui/card';
 import { ExportButton } from '../../components/common/ExportButton';
 import { FileText, TrendingUp, DollarSign, Award, Target, Users } from 'lucide-react';
 import { analyticsService } from '../../services/crmServices';

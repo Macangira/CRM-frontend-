@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { dashboardService, customerService, taskService, dealService } from '../../services/crmServices';
 import { DashboardMetrics, Activity, Customer, Task, Deal } from '../../types';
-import { Card } from '../../components/ui/Card';
+import { Card } from '../../components/ui/card';
 import { MetricCard } from '../../components/common/MetricCard';
 import { RevenueLineChart } from '../../components/charts/RevenueLineChart';
 import { PipelineDoughnutChart } from '../../components/charts/PipelineDoughnutChart';
 import { useAuth } from '../../context/AuthContext';
 import { SkeletonDashboard } from '../../components/ui/Skeleton';
 import { FileText, UserCircle, Users, CheckSquare, DollarSign, UserPlus, CheckCircle, Bell, ArrowUpRight, TrendingUp, Calendar, ChevronRight } from 'lucide-react';
-import { Avatar } from '../../components/ui/Avatar';
+import { Avatar } from '../../components/ui/avatar';
 
 export interface DashboardPageProps {
   onNavigate: (path: string) => void;

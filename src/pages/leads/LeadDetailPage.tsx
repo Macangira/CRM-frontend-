@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Lead } from '../../types';
 import { leadService } from '../../services/crmServices';
-import { Card } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
+import { Card } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
 import { Avatar } from '../../components/ui/avatar';
 import { LeadStatusBadge } from '../../components/common/StatusBadge';
 import { ActivityStream } from '../../components/common/ActivityStream';

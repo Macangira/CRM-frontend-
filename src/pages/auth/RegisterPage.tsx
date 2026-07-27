@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AuthLayout } from '../../layouts/AuthLayout';
-import { Input } from '../../components/ui/Input';
-import { Button } from '../../components/ui/Button';
+import { Input } from '../../components/ui/input';
+import { Button } from '../../components/ui/button';
 import { Mail, Lock, User as UserIcon, Phone, ArrowRight } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { authService } from '../../services/authService';

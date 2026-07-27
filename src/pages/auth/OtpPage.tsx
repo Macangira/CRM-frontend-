@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AuthLayout } from '../../layouts/AuthLayout';
-import { Button } from '../../components/ui/Button';
+import { Button } from '../../components/ui/button';
 import { ShieldCheck } from 'lucide-react';
 import { authService } from '../../services/authService';
 

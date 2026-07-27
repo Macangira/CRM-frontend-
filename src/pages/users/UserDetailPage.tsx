@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { userService, dealService, taskService, contactService } from '../../services/crmServices';
 import { User, Deal, Task } from '../../types';
-import { Card } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
-import { Badge } from '../../components/ui/Badge';
-import { Avatar } from '../../components/ui/Avatar';
+import { Card } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Avatar } from '../../components/ui/avatar';
 import { ActivityStream } from '../../components/common/ActivityStream';
 import { PriorityBadge, TaskStatusBadge } from '../../components/common/StatusBadge';
 import { useAuth } from '../../context/AuthContext';

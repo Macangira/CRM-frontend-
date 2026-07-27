@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { userService } from '../../services/crmServices';
 import { Role, Permission } from '../../types';
-import { Card } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
-import { Badge } from '../../components/ui/Badge';
+import { Card } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
 import { Shield, Check, Lock, Plus, Users } from 'lucide-react';
 
 export const RolesPage: React.FC = () => {

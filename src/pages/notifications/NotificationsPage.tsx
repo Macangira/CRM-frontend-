@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { notificationService } from '../../services/crmServices';
 import { NotificationItem } from '../../types';
-import { Button } from '../../components/ui/Button';
-import { Card } from '../../components/ui/Card';
+import { Button } from '../../components/ui/button';
+import { Card } from '../../components/ui/card';
 import { 
   CheckSquare, 
   UserPlus, 

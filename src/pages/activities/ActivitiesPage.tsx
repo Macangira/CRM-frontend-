@@ -2,10 +2,10 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { apiClient } from '../../api/fastapiClient';
 import { userService } from '../../services/crmServices';
 import { Activity, User } from '../../types';
-import { Card } from '../../components/ui/Card';
-import { Input } from '../../components/ui/Input';
-import { Select } from '../../components/ui/Select';
-import { Button } from '../../components/ui/Button';
+import { Card } from '../../components/ui/card';
+import { Input } from '../../components/ui/input';
+import { Select } from '../../components/ui/select';
+import { Button } from '../../components/ui/button';
 import { Avatar } from '../../components/ui/avatar';
 import { Skeleton } from '../../components/ui/Skeleton';
 import {

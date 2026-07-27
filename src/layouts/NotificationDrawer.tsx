@@ -2,7 +2,7 @@ import React from 'react';
 import { useNotifications } from '../context/NotificationContext';
 import { Drawer } from '../components/ui/Drawer';
 import { Bell, CheckCheck, AlertCircle, CheckCircle2, Info, AlertTriangle } from 'lucide-react';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 
 export interface NotificationDrawerProps {
   onNavigate: (path: string) => void;

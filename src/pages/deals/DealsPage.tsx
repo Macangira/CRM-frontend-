@@ -3,11 +3,11 @@ import { dealService, userService, customerService } from '../../services/crmSer
 import { Deal, DealStage, Customer } from '../../types';
 import { KanbanBoard } from '../../components/kanban/KanbanBoard';
 import { DataTable, Column } from '../../components/ui/DataTable';
-import { Button } from '../../components/ui/Button';
+import { Button } from '../../components/ui/button';
 import { Modal } from '../../components/ui/Modal';
 import { FilterDrawer, FilterValues } from '../../components/ui/FilterDrawer';
-import { Input } from '../../components/ui/Input';
-import { Select } from '../../components/ui/Select';
+import { Input } from '../../components/ui/input';
+import { Select } from '../../components/ui/select';
 import { DealStageBadge } from '../../components/common/StatusBadge';
 import { useAuth } from '../../context/AuthContext';
 import { hasPermission } from '../../constants/permissions';

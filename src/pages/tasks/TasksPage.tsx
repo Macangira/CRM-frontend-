@@ -3,12 +3,12 @@ import { taskService, userService, customerService, dealService, leadService } f
 import { Task, TaskStatus, Priority, Customer, Deal, Lead } from '../../types';
 import { CalendarView } from '../../components/calendar/CalendarView';
 import { DataTable, Column } from '../../components/ui/DataTable';
-import { Button } from '../../components/ui/Button';
+import { Button } from '../../components/ui/button';
 import { Modal } from '../../components/ui/Modal';
-import { Input } from '../../components/ui/Input';
-import { Select } from '../../components/ui/Select';
+import { Input } from '../../components/ui/input';
+import { Select } from '../../components/ui/select';
 import { TaskStatusBadge, PriorityBadge } from '../../components/common/StatusBadge';
-import { Avatar } from '../../components/ui/Avatar';
+import { Avatar } from '../../components/ui/avatar';
 import { useAuth } from '../../context/AuthContext';
 import { hasPermission } from '../../constants/permissions';
 import {
