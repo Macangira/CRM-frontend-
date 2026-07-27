@@ -29,7 +29,7 @@ export const authService = {
         throw new Error(detail);
       }
       if (err.code === 'ERR_NETWORK' || !err.response) {
-        throw new Error("FastAPI Backend (http://crmtasktracker-production.up.railway.app) connect nahi ho pa raha. Kripya check karein ki FastAPI server running hai ya nahi.");
+        throw new Error("FastAPI Backend (https://crmtasktracker-production.up.railway.app) connect nahi ho pa raha. Kripya check karein ki FastAPI server running hai ya nahi.");
       }
       throw new Error(detail || err.message || "Registration failed");
     }
