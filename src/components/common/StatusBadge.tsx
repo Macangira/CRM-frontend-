@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from '../ui/Badge';
+import { Badge } from '../ui/badge';
 import { TaskStatus, Priority, DealStage, LeadStatus, UserStatus } from '../../types';
 
 export const TaskStatusBadge: React.FC<{ status: TaskStatus }> = ({ status }) => {

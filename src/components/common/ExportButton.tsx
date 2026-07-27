@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Download, FileText, FileSpreadsheet, FileCode, Check } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 
 export interface ExportButtonProps {
   filename?: string;

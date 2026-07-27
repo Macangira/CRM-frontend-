@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Note } from '../../types';
 import { noteService } from '../../services/crmServices';
 import { RichTextEditor } from './RichTextEditor';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { Modal } from '../ui/Modal';
-import { Avatar } from '../ui/Avatar';
+import { Avatar } from '../ui/avatar';
 import {
   Pin, Trash2, Edit3, Plus, Sparkles, AlertTriangle, FileText, CheckCircle2, Clock
 } from 'lucide-react';

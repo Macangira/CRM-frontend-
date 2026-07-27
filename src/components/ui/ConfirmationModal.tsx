@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { AlertTriangle, Trash2, X, Info } from 'lucide-react';
-import { Button } from './Button';
+import { Button } from './button';
 
 export interface ConfirmationModalProps {
   isOpen: boolean;

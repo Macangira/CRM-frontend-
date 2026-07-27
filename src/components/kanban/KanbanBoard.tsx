@@ -13,7 +13,7 @@ import {
 } from '@dnd-kit/core';
 import { Deal, DealStage } from '../../types';
 import { Plus, User, Building2, Edit, Trash2 } from 'lucide-react';
-import { Avatar } from '../ui/Avatar';
+import { Avatar } from '../ui/avatar';
 
 // Custom Modifier: Snaps dragged card preview center directly to mouse cursor position
 const snapCenterToCursor: Modifier = ({ transform, draggingNodeRect, transform: { x, y } }) => {

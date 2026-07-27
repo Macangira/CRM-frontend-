@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Task } from '../../types';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock } from 'lucide-react';
 import { PriorityBadge, TaskStatusBadge } from '../common/StatusBadge';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 
 export interface CalendarViewProps {
   tasks: Task[];

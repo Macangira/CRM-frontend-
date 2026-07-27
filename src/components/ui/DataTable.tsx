@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Input } from './Input';
-import { Button } from './Button';
+import { Input } from './input';
+import { Button } from './button';
 import { SkeletonTableRow } from './Skeleton';
 
 export interface Column<T> {
