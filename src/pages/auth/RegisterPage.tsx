@@ -45,12 +45,10 @@ export const RegisterPage: React.FC<{ onNavigate: (path: string) => void }> = ({
         password
       });
 
-      // 2. Automatically hit send-verify-email-otp endpoint (POST /api/auth/send-verify-email-otp?email=...)
-      try {
-        await authService.resendVerifyOtp(email);
-      } catch (otpErr) {
+      // 2. Automatically hit send-verify-email-otp endpoint without blocking navigation
+      authService.resendVerifyOtp(email).catch(otpErr => {
         console.warn("OTP Send trigger warning:", otpErr);
-      }
+      });
 
       localStorage.setItem('ent_crm_verify_email', email);
       // Navigate to OTP page passing email
