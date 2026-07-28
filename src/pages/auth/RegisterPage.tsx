@@ -57,7 +57,9 @@ export const RegisterPage: React.FC<{ onNavigate: (path: string) => void }> = ({
       onNavigate(`/otp?email=${encodeURIComponent(email)}`);
     } catch (err: any) {
       console.error("Register Error:", err);
-      setError(err.message || 'Registration failed');
+      const errorMessage = err.message || 'Registration failed';
+      setError(errorMessage);
+      alert(errorMessage); // Added explicit alert popup for better visibility
     } finally {
       setIsLoading(false);
     }
