@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  LayoutDashboard, Users, Building2, Briefcase, CheckSquare, UserPlus, Shield, FileText, Settings, ChevronLeft, ChevronRight, LogOut, Activity as ActivityIcon, Contact as ContactIcon
+  LayoutDashboard, Users, Building2, Briefcase, CheckSquare, UserPlus, Shield, FileText, Settings, ChevronLeft, ChevronRight, LogOut, Activity as ActivityIcon, Contact as ContactIcon, MessageSquare
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { hasPermission, getUserRoleKey } from '../constants/permissions';
@@ -40,11 +40,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { label: 'Sales Leads', path: '/leads', icon: <UserPlus className="w-4 h-4" />, perm: 'lead:read' },
     { label: 'Audit Activity Log', path: '/activities', icon: <ActivityIcon className="w-4 h-4 text-purple-400" />, perm: 'rolepermission:read' },
     { label: 'Analytics Reports', path: '/reports', icon: <FileText className="w-4 h-4 text-teal-400" />, perm: 'pipeline:update' },
-    { label: 'Settings', path: '/settings', icon: <Settings className="w-4 h-4" />, perm: 'pipeline:update' }
+    { label: 'Settings', path: '/settings', icon: <Settings className="w-4 h-4" />, perm: 'pipeline:update' },
+    { label: 'Team Chat', path: '/chat', icon: <MessageSquare className="w-4 h-4 text-blue-400" />, perm: null },
   ];
 
   // Filter navigation links dynamically by exact roleId permission check
-  const navItems = allNavItems.filter(item => hasPermission(user, item.perm));
+  const navItems = allNavItems.filter(item => item.perm === null || hasPermission(user, item.perm));
 
   const roleLabel = {
     admin: 'System Administrator',

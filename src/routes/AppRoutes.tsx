@@ -19,6 +19,7 @@ import { TasksPage } from '../pages/tasks/TasksPage';
 import { ReportsPage } from '../pages/reports/ReportsPage';
 import { SettingsPage } from '../pages/settings/SettingsPage';
 import { NotificationsPage } from '../pages/notifications/NotificationsPage';
+import { ChatPage } from '../pages/chat/ChatPage';
 import { hasPermission, getUserRoleKey } from '../constants/permissions';
 import { AbstractBrandLoader } from '../components/ui/Skeleton';
 
@@ -161,6 +162,7 @@ export const AppRoutes: React.FC = () => {
       {currentPath === '/reports' && hasPermission(user, 'pipeline:update') && <ReportsPage />}
       {currentPath === '/settings' && hasPermission(user, 'pipeline:update') && <SettingsPage />}
       {currentPath === '/notifications' && <NotificationsPage />}
+      {currentPath === '/chat' && <ChatPage />}
       {![
           '/dashboard',
           '/users',
@@ -175,6 +177,7 @@ export const AppRoutes: React.FC = () => {
           '/reports',
           '/settings',
           '/notifications',
+          '/chat',
         ].includes(currentPath) && (
           hasDashboardAccess
             ? <DashboardPage onNavigate={navigate} />
