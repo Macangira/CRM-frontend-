@@ -153,16 +153,24 @@ export const ChatPage: React.FC = () => {
 
   // Select a chatroom
   const handleSelectRoom = async (room: ChatRoom) => {
-    setSelectedRoom(room);
+    // Normalize id - backend may return _id instead of id
+    const roomId = room.id || (room as any)._id;
+    if (!roomId) {
+      console.error('[Chat] Room has no id:', room);
+      return;
+    }
+    const normalizedRoom = { ...room, id: String(roomId) };
+    setSelectedRoom(normalizedRoom);
     setShowChatOnMobile(true);
     setIsLoadingMessages(true);
     setMessages([]);
     try {
-      joinRoom(room.id);
-      const msgs = await chatService.getMessages(room.id);
+      joinRoom(String(roomId));
+      const msgs = await chatService.getMessages(String(roomId));
       // Sort oldest first
       setMessages([...msgs].reverse());
-    } catch {
+    } catch (err) {
+      console.error('[Chat] Failed to load messages:', err);
       setMessages([]);
     } finally {
       setIsLoadingMessages(false);
@@ -225,30 +233,43 @@ export const ChatPage: React.FC = () => {
 
   // Start new chat with a user
   const handleStartChat = async (targetUser: ChatUser) => {
-    const targetId = targetUser.id || (targetUser as any)._id;
-    // Check if room already exists
+    const targetId = String(targetUser.id || (targetUser as any)._id || '');
+    if (!targetId) {
+      console.error('[Chat] Target user has no id:', targetUser);
+      return;
+    }
+    // Close panel immediately for better UX
+    setShowNewChat(false);
+    setUserSearchQuery('');
+    setSearchResults([]);
+
+    // Check if room already exists with this user
     const existing = chatrooms.find(r => {
       const parts = r.name.split('_');
       return parts.includes(userId) && parts.includes(targetId);
     });
     if (existing) {
-      setShowNewChat(false);
-      setUserSearchQuery('');
-      setSearchResults([]);
-      handleSelectRoom(existing);
+      await handleSelectRoom(existing);
       return;
     }
     // Create new room
     try {
       const ids = [userId, targetId].sort();
-      const room = await chatService.createChatroom(userId, {
+      const rawRoom = await chatService.createChatroom(userId, {
         name: `${ids[0]}_${ids[1]}`,
         description: 'personal chat room',
         roomType: 'direct',
         isPrivate: true,
       });
+      // Normalize id field (_id → id)
+      const roomId = String((rawRoom as any).id || (rawRoom as any)._id || '');
+      if (!roomId) {
+        console.error('[Chat] Created room has no id:', rawRoom);
+        return;
+      }
       const enriched: ChatRoom = {
-        ...room,
+        ...rawRoom,
+        id: roomId,
         otherUser: {
           id: targetId,
           fname: targetUser.fname,
@@ -258,12 +279,9 @@ export const ChatPage: React.FC = () => {
         }
       };
       setChatrooms(prev => [enriched, ...prev]);
-      setShowNewChat(false);
-      setUserSearchQuery('');
-      setSearchResults([]);
-      handleSelectRoom(enriched);
+      await handleSelectRoom(enriched);
     } catch (e) {
-      console.error('Failed to create chatroom:', e);
+      console.error('[Chat] Failed to create chatroom:', e);
     }
   };
 
